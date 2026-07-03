@@ -144,13 +144,9 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   isAgent() { return this.auth.isAgent(); }
 
   ngOnInit() {
-    console.log('isAgent:', this.isAgent());
-    console.log('role:', this.auth.currentUser()?.role);
     
     this.ticketService.getDashboard().subscribe({
       next: res => {
-        console.log('stats:', res.data);
-        console.log('byStatus:', res.data?.byStatus);
         this.stats.set(res.data ?? null);
         this.loading.set(false);
         this.dataLoaded = true;
